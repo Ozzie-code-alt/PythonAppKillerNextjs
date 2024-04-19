@@ -61,16 +61,31 @@ code.bind("<FocusOut>", on_leave)
 
 Frame(frame, width=295, height=2, bg="black").place(x=25, y=177)
 
+
+#-----------------Login Main Window----------------- MARK:MainWindow
+
+def MainWindow():
+    root.destroy()
+    window = tk.Tk()  # Use Toplevel instead of Tk() here
+    window.title("Desktop GUI and Tracker")
+    window.geometry("925x500+300+200")
+    Label(window, text="Welcome to Desktop GUI and Tracker", font=("Microsoft YaHei UI Light", 23, "bold"), fg="#57a1f8", bg="white").pack()
+
+
+
+    
+    window.mainloop()
+
+
+
+
 #-----------------Login Button-----------------
 
-Button(frame, width=29, pady=7, text="Sign In", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0).place(x=35, y=204)
+Button(frame,  width=29, pady=7, text="Sign In", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=MainWindow).place(x=35, y=204)
 label =Label(frame, text="Don't have an account?", font=("Microsoft YaHei UI Light", 9), fg="black", bg="white")
 label.place(x=75, y=270)
 
 sign_up = Button(frame, text="Sign Up", font=("Microsoft YaHei UI Light", 9), fg="#57a1f8", cursor="hand2", bg="white", border=0)
 sign_up.place(x=215, y=270)
 
-
-
 root.mainloop()
-
