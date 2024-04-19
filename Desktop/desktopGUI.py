@@ -70,10 +70,10 @@ def MainWindow():
     window.title("Desktop GUI and Tracker")
     window.geometry("925x500+300+200")
     Label(window, text="Welcome to Desktop GUI and Tracker", font=("Microsoft YaHei UI Light", 23, "bold"), fg="#57a1f8", bg="white").pack()
+    Button(window, text="Insert Data", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=insertData).pack()
 
 
 
-    
     window.mainloop()
 
 
