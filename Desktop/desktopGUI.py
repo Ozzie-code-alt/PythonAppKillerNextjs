@@ -2,14 +2,21 @@ import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
 from desktopDbRoutes import insertData
+import subprocess
 
+proccess = subprocess.Popen(['C:\\Users\\Justin Santos\\Desktop\\Git_Container\\PythonAppKillerNextjs\\Desktop\\venv\\Scripts\\python.exe', 'backend.py'])
+
+def on_close():
+    proccess.kill()  # Kill the subprocess
+    root.destroy()
 
 root = tk.Tk()
 root.title("Desktop GUI Login")
 root.geometry("925x500+300+200")
 root.configure(bg="#fff")
 root.resizable(False, False)
-
+root.protocol("WM_DELETE_WINDOW", on_close)
+#MARK:Backend Subprocess must me configured to run the backend.py file
 image = Image.open("assets/LoginImage.png")
 resizedImage = image.resize((450, 300))
 img = ImageTk.PhotoImage(resizedImage)
@@ -62,6 +69,15 @@ code.bind("<FocusOut>", on_leave)
 Frame(frame, width=295, height=2, bg="black").place(x=25, y=177)
 
 
+
+
+
+
+
+
+def openChrome():
+    subprocess.Popen(['C:\\Users\\Justin Santos\\Desktop\\Git_Container\\PythonAppKillerNextjs\\Desktop\\venv\\Scripts\\python.exe', 'LocalBrowser.py'])
+
 #-----------------Login Main Window----------------- MARK:MainWindow
 
 def MainWindow():
@@ -70,13 +86,11 @@ def MainWindow():
     window.title("Desktop GUI and Tracker")
     window.geometry("925x500+300+200")
     Label(window, text="Welcome to Desktop GUI and Tracker", font=("Microsoft YaHei UI Light", 23, "bold"), fg="#57a1f8", bg="white").pack()
-    Button(window, text="Insert Data", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=insertData).pack()
-
-
-
+   # This is Processes Button
+    Button(window, text="Send Runnning Processes to Backend", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=insertData).pack()
+   # this is Chrome Button
+    Button(window, text="Open Chrome Browser", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=openChrome).pack()
     window.mainloop()
-
-
 
 
 #-----------------Login Button-----------------

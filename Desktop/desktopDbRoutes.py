@@ -1,9 +1,10 @@
 
 from pymongo import MongoClient
 import requests
-def insertData():
-    client = MongoClient('mongodb+srv://justin:justin123@cluster0.lhij5pu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
+def insertData():
+
+    client = MongoClient('mongodb+srv://justin:justin123@cluster0.lhij5pu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     db = client['thesisDb'] # database name this will be created if not present
     collection = db['thesisCollection'] # collection name
 
