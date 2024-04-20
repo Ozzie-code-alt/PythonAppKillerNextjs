@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import psutil
+from LocalBrowser import  pass_visited_website, initialize_driver
 
 app = Flask(__name__)
 CORS(app)
@@ -22,6 +23,16 @@ def get_process():
     print(unique_processes)
     # Return the unique processes as JSON
     return jsonify(unique_processes)
+
+
+@app.route('/active_tab', methods=['GET'])
+def get_Tab():
+    driver = initialize_driver()
+    visited_websites = pass_visited_website(driver)
+    # Quit the driver after use
+    return jsonify(visited_websites)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
