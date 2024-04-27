@@ -5,11 +5,11 @@ from desktopDbRoutes import insertData
 import subprocess
 from LocalBrowser import initialize_driver, pass_visited_website
 #MARK:Backend Subprocess must me configured to run the backend.py file
-# proccess = subprocess.Popen(['C:\\Users\\Justin Santos\\Desktop\\Git_Container\\PythonAppKillerNextjs\\Desktop\\venv\\Scripts\\python.exe', 'backend.py'])
+proccess = subprocess.Popen(['C:\\Users\\Justin Santos\\Desktop\\Git_Container\\PythonAppKillerNextjs\\Desktop\\venv\\Scripts\\python.exe', 'backend.py'])
 
-# def on_close():
-#     proccess.kill()  # Kill the subprocess
-#     root.destroy()
+def on_close():
+    proccess.kill()  # Kill the subprocess
+    root.destroy()
 
 root = tk.Tk()
 root.title("Desktop GUI Login")
@@ -92,6 +92,7 @@ def MainWindow():
    # this is Chrome Button
     Button(window, text="Open Chrome Browser", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=openChrome).pack()
     window.mainloop()
+
 
 
 
