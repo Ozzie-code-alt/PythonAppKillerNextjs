@@ -11,7 +11,7 @@ chrome.tabs.onUpdated.addListener((tabId, tab) => {
     const queryParameters = tab.url;
     const urlParameters = new URLSearchParams(queryParameters);
     // console.log("this is the video id", urlParameters);
-    //send a message to the content script that there is a new video loaded
+    //send a message to the content script that there is a new video loadedtytry
     chrome.tabs.sendMessage(tabId, {
       type: "NEW",
       videoId: urlParameters,
