@@ -1,0 +1,20 @@
+{
+  "name": "Tab Tracker",
+  "description": "Tracks tab names and active tab in real-time.",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "activeTab"
+ ],
+ "host_permissions": [
+  "http://127.0.0.1:5000/process-data" ,
+  "http://127.0.0.1:5000/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}
