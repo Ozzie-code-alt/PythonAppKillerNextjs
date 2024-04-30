@@ -43,6 +43,7 @@ user = Entry(frame, width=56, font=("Microsoft YaHei UI Light", 11), bg="white",
 user.place(x=30, y=80)
 user.insert(0, 'Username')
 #-----------------Username Hover-----------------
+
 user.bind("<FocusIn>", on_enter)
 user.bind("<FocusOut>", on_leave)
 
@@ -71,6 +72,14 @@ Frame(frame, width=295, height=2, bg="black").place(x=25, y=177)
 
 
 
+def errorMessagePopup():
+    root = tk.Tk()
+    root.title("Error")
+    root.geometry("300x100")
+    root.configure(bg="#fff")
+    root.resizable(False, False)
+    Label(root, text="Please enter both username and password", font=("Microsoft YaHei UI Light", 11), fg="red", bg="white").pack()
+    root.mainloop()
 
 
 
@@ -82,20 +91,42 @@ def openChrome():
 #-----------------Login Main Window----------------- MARK:MainWindow
 
 def MainWindow():
-    root.destroy()
-    window = tk.Tk()  # Use Toplevel instead of Tk() here
-    window.title("Desktop GUI and Tracker")
-    window.geometry("925x500+300+200")
-    Label(window, text="Welcome to Desktop GUI and Tracker", font=("Microsoft YaHei UI Light", 23, "bold"), fg="#57a1f8", bg="white").pack()
-   # This is Processes Button
-    Button(window, text="Send Runnning Processes to Backend", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=insertData).pack()
-   # this is Chrome Button
-    Button(window, text="Open Chrome Browser", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=openChrome).pack()
-    window.mainloop()
+    username = user.get()
+    password = code.get()
+    if username not in ['', 'Username'] and password not in ['', 'Password']:
+        root.destroy()
+        print("User:", username)
+        print("Password:", password)
+    else:
+        errorMessagePopup()
+
+
+#     window = tk.Tk()  # Use Toplevel instead of Tk() here
+#     window.title("Desktop GUI and Tracker")
+#     window.geometry("925x500+300+200")
+#     Label(window, text="Welcome to Desktop GUI and Tracker", font=("Microsoft YaHei UI Light", 23, "bold"), fg="#57a1f8", bg="white").pack()
+#    # This is Processes Button
+#     Button(window, text="Send Runnning Processes to Backend", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=insertData).pack()
+#    # this is Chrome Button
+#     Button(window, text="Open Chrome Browser", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0, command=openChrome).pack()
+#     window.mainloop()
 
 
 
 
+def signUpPop():
+    root = tk.Tk()
+    root.title("Sign Up")
+    root.geometry("300x300")
+    root.configure(bg="#fff")
+    root.resizable(False, False)
+    Label(root, text="Sign Up", font=("Microsoft YaHei UI Light", 23, "bold"), fg="#57a1f8", bg="white").pack()
+    Label(root, text="Username", font=("Microsoft YaHei UI Light", 11), fg="black", bg="white").pack()
+    Entry(root, width=56, font=("Microsoft YaHei UI Light", 11), bg="white", fg="black", border=0).pack()
+    Label(root, text="Password", font=("Microsoft YaHei UI Light", 11), fg="black", bg="white").pack()
+    Entry(root, width=56, font=("Microsoft YaHei UI Light", 11), bg="white", fg="black", border=0).pack()
+    Button(root, text="Sign Up", font=("Microsoft YaHei UI Light", 11), bg="#57a1f8", fg="white", border=0).pack()
+    root.mainloop()
 
 
 #-----------------Login Button-----------------
@@ -108,3 +139,6 @@ sign_up = Button(frame, text="Sign Up", font=("Microsoft YaHei UI Light", 9), fg
 sign_up.place(x=215, y=270)
 
 root.mainloop()
+
+
+
